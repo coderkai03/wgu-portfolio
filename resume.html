@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rian Corcino Portfolio</title>
+    <link rel="stylesheet" href="master.css">
+</head>
+<body>
+    <header id="header"></header>
+    <nav>
+        <ul>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="cover-letter.html">Cover Letter</a></li>
+            <li><a href="career-goals.html">Career Goals</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="education-section"></section>
+        <section id="experience-section"></section>
+        <section id="projects-section"></section>
+        <section id="skills-section"></section>
+        <div id="current-date"></div>
+    </main>
+    <footer>
+        <p>&copy; 2024 <span>Rian Corcino</span>. All rights reserved.</p>
+    </footer>
+    <script>
+        // Fetch and render resume data from JSON
+        fetch('resume-data.json')
+            .then(response => response.json())
+            .then(data => {
+                // Header
+                const header = document.getElementById('header');
+                header.innerHTML = `
+                    <h1 style="color: white;">${data.header.name}</h1>
+                    <p><span>${data.header.title}</span></p>
+                    <p>
+                        ${data.header.links.map(link => `<a href="${link.url}" style="color: white;">${link.url}</a>`).join(' | ')}
+                    </p>
+                `;
+                // Education
+                const eduSection = document.getElementById('education-section');
+                eduSection.innerHTML = `<h2>Education</h2>` +
+                    data.education.map(edu => `
+                        <article class="card">
+                            <div class="school-header">
+                                <img src="${edu.logo}" alt="${edu.school} Logo" class="school-logo" width="50" height="50">
+                                <h3>${edu.school}</h3>
+                            </div>
+                            <p><em>${edu.degree}</em> | ${edu.date}</p>
+                            <p>${edu.location}</p>
+                        </article>
+                    `).join('');
+                // Experience
+                const expSection = document.getElementById('experience-section');
+                expSection.innerHTML = `<h2>Experience</h2>` +
+                    data.experience.map(exp => `
+                        <article class="card">
+                            <div class="experience-header" style="display: flex; align-items: center; gap: 1rem;">
+                                <img src="${exp.logo}" alt="${exp.company} Logo" class="school-logo" width="50" height="50">
+                                <div>
+                                    <h3>${exp.title}</h3>
+                                    <p><em>${exp.company}</em> | <span>${exp.date}</span></p>
+                                    <p><span>${exp.location}</span></p>
+                                </div>
+                            </div>
+                            <ul>
+                                ${exp.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
+                            </ul>
+                        </article>
+                    `).join('<hr>');
+                // Projects
+                const projSection = document.getElementById('projects-section');
+                projSection.innerHTML = `<h2>Projects</h2>` +
+                    data.projects.map(proj => `
+                        <article class="card">
+                            <h3>${proj.name}</h3>
+                            <p><em>${proj.stack}</em> | ${proj.date}</p>
+                            <ul>
+                                ${proj.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
+                            </ul>
+                        </article>
+                    `).join('');
+                // Skills Table
+                const skillsSection = document.getElementById('skills-section');
+                skillsSection.innerHTML = `
+                    <h2>Technical Skills</h2>
+                    <table>
+                        <caption>Skills Overview</caption>
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Skills</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${data.skills.map(skill => `
+                                <tr>
+                                    <td>${skill.category}</td>
+                                    <td>${skill.skills}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            });
+        // JavaScript to populate the date
+        const dateDiv = document.getElementById('current-date');
+        const currentDate = new Date();
+        dateDiv.textContent = `Last updated: ${currentDate.toLocaleDateString()}`;
+        // Console message
+        console.log('Resume page loaded successfully');
+    </script>
+</body>
+</html> 

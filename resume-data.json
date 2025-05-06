@@ -1,0 +1,113 @@
+{
+  "header": {
+    "name": "Rian Corcino",
+    "title": "Software Engineer",
+    "links": [
+      {"label": "LinkedIn", "url": "https://linkedin.com/in/riancorcino"},
+      {"label": "GitHub", "url": "https://github.com/coderkai03"},
+      {"label": "Portfolio", "url": "https://rian.corcino.net"}
+    ]
+  },
+  "education": [
+    {
+      "school": "Western Governors University",
+      "logo": "images/wgu-logo.png",
+      "degree": "Bachelor of Science in Computer Science",
+      "date": "Expected: May 2026",
+      "location": "Salt Lake City, UT"
+    },
+    {
+      "school": "Riverside City College",
+      "logo": "images/rcc.png",
+      "degree": "Associate of Science in Computer Science",
+      "date": "Aug 2021 – May 2024",
+      "location": "Riverside, CA"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Software Engineer Intern",
+      "company": "Microsoft",
+      "logo": "images/microsoft.png",
+      "date": "Jun 2024 – Sep. 2024",
+      "location": "Redmond, WA",
+      "bullets": [
+        "Enhanced Microsoft Copilot catch-up search accuracy by 7% by optimizing queries with Azure Search",
+        "Reduced search latency by 200 ms by integrating meeting summaries with C#, Azure Functions, and Kafka",
+        "Increased query retrieval efficiency by 15% by optimizing search pipeline with Microsoft Knowledge Graph"
+      ]
+    },
+    {
+      "title": "Software Engineer",
+      "company": "Oregon Human Development Corp.",
+      "logo": "images/ohdc.jpg",
+      "date": "Oct 2023 – Apr. 2024",
+      "location": "Riverside, CA",
+      "bullets": [
+        "Built an Android app using Kotlin to educate 68,000+ farmers on pesticide safety and heat stress management",
+        "Implemented table partitioning using BigQuery to replace static data, reducing update time by 90%",
+        "Enhanced accessibility by automating translating for 3+ languages for Hispanic farmers using localization"
+      ]
+    },
+    {
+      "title": "Software Engineer Intern",
+      "company": "Microsoft",
+      "logo": "images/microsoft.png",
+      "date": "May 2022 – Jul. 2022",
+      "location": "Remote",
+      "bullets": [
+        "Built interactive communication web app for 100+ student users using React, resulting in a 63% increase in classroom engagement",
+        "Designed an analytics dashboard using GraphQL, providing action items and gaining experience in data processing"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Synergy",
+      "stack": "Next.js, Flask, Firebase, LangChain, AWS, OpenAI",
+      "date": "Nov 2024 – Present",
+      "bullets": [
+        "Built a team-matching web platform that has helped 4,000+ hackers find teammates at major hackathons",
+        "Developed a RAG-powered recommendation system to suggest optimal teammates",
+        "Designed a scalable architecture to support multiple concurrent hackathons with minimal latency"
+      ]
+    },
+    {
+      "name": "ViralityAI",
+      "stack": "Next.js, Flask, Python, AWS, Scikit",
+      "date": "Feb 2024",
+      "bullets": [
+        "Developed an AI analytics tool that predicts video virality with 47% accuracy, trained on 26,000 viral videos",
+        "Integrated Instagram's Graph API and trained an ML model using Scikit Learn to analyze video formats"
+      ]
+    },
+    {
+      "name": "NagaGuard",
+      "stack": "Gemini, React, Python, Flask, SQL",
+      "date": "Apr 2024",
+      "bullets": [
+        "Developed React web app to optimize patient data management and operational efficiency for 6,000+ hospitals",
+        "Leveraged Gemini LLM API to automate medical transcription, reducing coding time by 98%",
+        "Awarded Best Startup at BearHacks, UCR"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "category": "Programming Languages",
+      "skills": "JavaScript, Typescript, Java, C/C++, C#, Python, SQL, Kotlin, HTML/CSS"
+    },
+    {
+      "category": "Developer Tools",
+      "skills": "Postman, Vercel, Firebase, Clerk, Google Console, Supabase, GraphQL, Docker, ChromaDB"
+    },
+    {
+      "category": "Libraries",
+      "skills": "OpenAI, Anthropic, NumPy, Pandas, Scikit Learn, MatplotLib, OpenCV, PyTorch, TensorFlow, Keras"
+    },
+    {
+      "category": "Frameworks",
+      "skills": "React, Node.js, Next.js, TypeScript, Flask, Material UI, ExpressJS"
+    }
+  ]
+} 

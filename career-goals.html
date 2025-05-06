@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rian Corcino - Career Goals</title>
+    <link rel="stylesheet" href="master.css">
+</head>
+<body>
+    <header>
+        <h1>Career Goals</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="cover-letter.html">Cover Letter</a></li>
+            <li><a href="career-goals.html">Career Goals</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>My Vision</h2>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <img src="images/HEADSHOT.jpg" alt="Rian Corcino Headshot" width="100" height="100" style="border-radius: 50%;">
+                <p>As a Computer Science student at Western Governors University, my career goals focus on becoming a leading software engineer specializing in AI/ML integration and full-stack development. My experience at Microsoft and various projects demonstrate my commitment to innovation and technical excellence.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Career Objectives</h2>
+            <ul>
+                <li>Complete Bachelor of Science in Computer Science by May 2026</li>
+                <li>Develop expertise in AI/ML technologies and cloud architecture</li>
+                <li>Lead innovative software projects that make a positive impact</li>
+                <li>Contribute to open-source communities and mentor aspiring developers</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Professional Development</h2>
+            <div class="media-container">
+                <video controls width="720" height="480">
+                    <source src="images/calhacks.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p>Watch my hackathon journey!</p>
+        </section>
+
+        <section>
+            <h2>My Message</h2>
+            <div class="media-container">
+                <audio controls>
+                    <source src="audio/voiceover.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <p>Listen to my thoughts about the future of software engineering and AI integration.</p>
+        </section>
+
+        <section>
+            <h2>Contact Me</h2>
+            <form id="contactForm">
+                <div>
+                    <label for="firstname">First Name:</label>
+                    <input type="text" id="firstname" name="firstname" required>
+                </div>
+
+                <div>
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" id="lastname" name="lastname" required>
+                </div>
+
+                <div>
+                    <label for="company">Company Name:</label>
+                    <input type="text" id="company" name="company" required>
+                </div>
+
+                <div>
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div>
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+
+                <div>
+                    <label>Best Contact Time:</label>
+                    <div>
+                        <input type="radio" id="am" name="contact_time" value="am" required>
+                        <label for="am">A.M.</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="pm" name="contact_time" value="pm">
+                        <label for="pm">P.M.</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="anytime" name="contact_time" value="anytime">
+                        <label for="anytime">Anytime</label>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="contact_method">Preferred Contact Method:</label>
+                    <select id="contact_method" name="contact_method" required>
+                        <option value="">Select a method</option>
+                        <option value="phone">Phone</option>
+                        <option value="email">Email</option>
+                        <option value="text">Text</option>
+                    </select>
+                </div>
+
+                <button type="submit">Send Message</button>
+            </form>
+
+            <script>
+                document.getElementById('contactForm').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    
+                    const formData = {
+                        firstname: document.getElementById('firstname').value,
+                        lastname: document.getElementById('lastname').value,
+                        company: document.getElementById('company').value,
+                        email: document.getElementById('email').value,
+                        phone: document.getElementById('phone').value,
+                        message: document.getElementById('message').value,
+                        contact_time: document.querySelector('input[name="contact_time"]:checked').value,
+                        contact_method: document.getElementById('contact_method').value
+                    };
+
+                    fetch('contact-data.json', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Message sent successfully!');
+                            document.getElementById('contactForm').reset();
+                        } else {
+                            throw new Error('Failed to send message');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was an error sending your message. Please try again.');
+                    });
+                });
+            </script>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Rian Corcino. All rights reserved.</p>
+    </footer>
+</body>
+</html> 
