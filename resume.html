@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="master.css">
 </head>
 <body>
-    <header id="header"></header>
+    <header id="header">
+        <h1 style="color: white;"></h1>
+        <p><span></span></p>
+        <p></p>
+    </header>
     <nav>
         <ul>
             <li><a href="resume.html">Resume</a></li>
@@ -16,10 +20,73 @@
         </ul>
     </nav>
     <main>
-        <section id="education-section"></section>
-        <section id="experience-section"></section>
-        <section id="projects-section"></section>
-        <section id="skills-section"></section>
+        <section id="education-section">
+            <h2>Education</h2>
+            <div id="education-cards">
+                <template id="education-template">
+                    <article class="card">
+                        <div class="school-header">
+                            <img src="" alt="" class="school-logo" width="50" height="50">
+                            <h3><strong></strong></h3>
+                        </div>
+                        <p><em></em><br><strong></strong></p>
+                        <p><strong></strong></p>
+                    </article>
+                </template>
+            </div>
+        </section>
+        <section id="experience-section">
+            <h2>Experience</h2>
+            <div id="experience-cards">
+                <template id="experience-template">
+                    <article class="card">
+                        <div class="experience-header" style="display: flex; align-items: center; gap: 1rem;">
+                            <img src="" alt="" class="school-logo" width="50" height="50">
+                            <div>
+                                <h3><strong></strong></h3>
+                                <p><em></em><br><strong></strong></p>
+                                <p><strong></strong></p>
+                            </div>
+                        </div>
+                        <ul></ul>
+                    </article>
+                    <hr>
+                </template>
+            </div>
+        </section>
+        <section id="projects-section">
+            <h2>Projects</h2>
+            <div id="project-cards">
+                <template id="project-template">
+                    <article class="card">
+                        <h3><strong></strong></h3>
+                        <p><em></em><br><strong></strong></p>
+                        <ul></ul>
+                    </article>
+                </template>
+            </div>
+        </section>
+        <section id="skills-section">
+            <h2>Technical Skills</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Skills</th>
+                        <th>Years of Experience</th>
+                    </tr>
+                </thead>
+                <tbody id="skills-body">
+                    <template id="skills-template">
+                        <tr>
+                            <td><strong></strong></td>
+                            <td><strong></strong></td>
+                            <td><strong></strong></td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </section>
         <div id="current-date"></div>
     </main>
     <footer>
@@ -27,88 +94,108 @@
     </footer>
     <script>
         // Fetch and render resume data from JSON
+        console.log('Starting to fetch resume data...');
         fetch('resume-data.json')
-            .then(response => response.json())
+            .then(response => {
+                console.log('Received response from server');
+                return response.json();
+            })
             .then(data => {
+                console.log('Successfully parsed JSON data:', data);
+                
                 // Header
+                console.log('Rendering header section...');
                 const header = document.getElementById('header');
-                header.innerHTML = `
-                    <h1 style="color: white;">${data.header.name}</h1>
-                    <p><span>${data.header.title}</span></p>
-                    <p>
-                        ${data.header.links.map(link => `<a href="${link.url}" style="color: white;">${link.url}</a>`).join(' | ')}
-                    </p>
-                `;
+                header.querySelector('h1').textContent = data.header.name;
+                header.querySelector('p span').textContent = data.header.title;
+                header.querySelector('p:last-child').innerHTML = data.header.links.map(link => 
+                    `<a href="${link.url}" style="color: white;">${link.url}</a>`).join(' | ');
+                console.log('Header section rendered successfully');
+
                 // Education
-                const eduSection = document.getElementById('education-section');
-                eduSection.innerHTML = `<h2>Education</h2>` +
-                    data.education.map(edu => `
-                        <article class="card">
-                            <div class="school-header">
-                                <img src="${edu.logo}" alt="${edu.school} Logo" class="school-logo" width="50" height="50">
-                                <h3>${edu.school}</h3>
-                            </div>
-                            <p><em>${edu.degree}</em> | ${edu.date}</p>
-                            <p>${edu.location}</p>
-                        </article>
-                    `).join('');
+                console.log('Rendering education section...');
+                const eduTemplate = document.getElementById('education-template');
+                const eduCards = document.getElementById('education-cards');
+                data.education.forEach((edu, index) => {
+                    console.log(`Processing education item ${index + 1}:`, edu);
+                    const clone = eduTemplate.content.cloneNode(true);
+                    clone.querySelector('img').src = edu.logo;
+                    clone.querySelector('img').alt = `${edu.school} Logo`;
+                    clone.querySelector('h3 strong').textContent = edu.school;
+                    clone.querySelector('em').textContent = edu.degree;
+                    clone.querySelector('p:nth-of-type(1) strong').textContent = edu.date;
+                    clone.querySelector('p:last-child strong').textContent = edu.location;
+                    eduCards.appendChild(clone);
+                });
+                console.log('Education section rendered successfully');
+
                 // Experience
-                const expSection = document.getElementById('experience-section');
-                expSection.innerHTML = `<h2>Experience</h2>` +
-                    data.experience.map(exp => `
-                        <article class="card">
-                            <div class="experience-header" style="display: flex; align-items: center; gap: 1rem;">
-                                <img src="${exp.logo}" alt="${exp.company} Logo" class="school-logo" width="50" height="50">
-                                <div>
-                                    <h3>${exp.title}</h3>
-                                    <p><em>${exp.company}</em> | <span>${exp.date}</span></p>
-                                    <p><span>${exp.location}</span></p>
-                                </div>
-                            </div>
-                            <ul>
-                                ${exp.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
-                            </ul>
-                        </article>
-                    `).join('<hr>');
+                console.log('Rendering experience section...');
+                const expTemplate = document.getElementById('experience-template');
+                const expCards = document.getElementById('experience-cards');
+                data.experience.forEach((exp, index) => {
+                    console.log(`Processing experience item ${index + 1}:`, exp);
+                    const clone = expTemplate.content.cloneNode(true);
+                    clone.querySelector('img').src = exp.logo;
+                    clone.querySelector('img').alt = `${exp.company} Logo`;
+                    clone.querySelector('h3 strong').textContent = exp.title;
+                    clone.querySelector('em').textContent = exp.company;
+                    clone.querySelector('p:nth-of-type(1) strong').textContent = exp.date;
+                    clone.querySelector('p:last-child strong').textContent = exp.location;
+                    const ul = clone.querySelector('ul');
+                    exp.bullets.forEach(bullet => {
+                        const li = document.createElement('li');
+                        li.textContent = bullet;
+                        ul.appendChild(li);
+                    });
+                    expCards.appendChild(clone);
+                });
+                console.log('Experience section rendered successfully');
+
                 // Projects
-                const projSection = document.getElementById('projects-section');
-                projSection.innerHTML = `<h2>Projects</h2>` +
-                    data.projects.map(proj => `
-                        <article class="card">
-                            <h3>${proj.name}</h3>
-                            <p><em>${proj.stack}</em> | ${proj.date}</p>
-                            <ul>
-                                ${proj.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
-                            </ul>
-                        </article>
-                    `).join('');
+                console.log('Rendering projects section...');
+                const projTemplate = document.getElementById('project-template');
+                const projCards = document.getElementById('project-cards');
+                data.projects.forEach((proj, index) => {
+                    console.log(`Processing project item ${index + 1}:`, proj);
+                    const clone = projTemplate.content.cloneNode(true);
+                    clone.querySelector('h3 strong').textContent = proj.name;
+                    clone.querySelector('em').textContent = proj.stack;
+                    clone.querySelector('p strong').textContent = proj.date;
+                    const ul = clone.querySelector('ul');
+                    proj.bullets.forEach(bullet => {
+                        const li = document.createElement('li');
+                        li.textContent = bullet;
+                        ul.appendChild(li);
+                    });
+                    projCards.appendChild(clone);
+                });
+                console.log('Projects section rendered successfully');
+
                 // Skills Table
-                const skillsSection = document.getElementById('skills-section');
-                skillsSection.innerHTML = `
-                    <h2>Technical Skills</h2>
-                    <table>
-                        <caption>Skills Overview</caption>
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Skills</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${data.skills.map(skill => `
-                                <tr>
-                                    <td>${skill.category}</td>
-                                    <td>${skill.skills}</td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                `;
+                console.log('Rendering skills section...');
+                const skillsTemplate = document.getElementById('skills-template');
+                const skillsBody = document.getElementById('skills-body');
+                data.skills.forEach((skill, index) => {
+                    console.log(`Processing skill item ${index + 1}:`, skill);
+                    const clone = skillsTemplate.content.cloneNode(true);
+                    clone.querySelectorAll('td strong')[0].textContent = skill.category;
+                    clone.querySelectorAll('td strong')[1].textContent = skill.skills;
+                    clone.querySelectorAll('td strong')[2].textContent = skill.yoe;
+                    skillsBody.appendChild(clone);
+                });
+                console.log('Skills section rendered successfully');
+            })
+            .catch(error => {
+                console.error('Error loading resume data:', error);
             });
+
         // JavaScript to populate the date
+        console.log('Setting current date...');
         const dateDiv = document.getElementById('current-date');
         const currentDate = new Date();
-        dateDiv.textContent = `Last updated: ${currentDate.toLocaleDateString()}`;
+        console.log('Current date set successfully');
+        
         // Console message
         console.log('Resume page loaded successfully');
     </script>

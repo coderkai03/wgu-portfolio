@@ -1,0 +1,37 @@
+{
+    "contacts": [
+    {
+      "firstname": "John",
+      "lastname": "Smith",
+      "company": "Tech Innovations Inc",
+      "email": "john.smith@techinnovations.com",
+      "phone": "555-0123",
+      "message": "I'm interested in discussing potential collaboration opportunities for AI integration projects. Your background in ML and full-stack development aligns well with our current needs.",
+      "contact_time": "pm",
+      "contact_method": "email",
+      "timestamp": "2024-03-15T14:30:00Z"
+    },
+    {
+      "firstname": "Sarah",
+      "lastname": "Johnson",
+      "company": "Future Systems LLC",
+      "email": "sarah.j@futuresystems.com",
+      "phone": "555-0124",
+      "message": "We're looking for a software engineer to join our cloud architecture team. Your experience at Microsoft and AI focus caught our attention. Would love to discuss potential opportunities.",
+      "contact_time": "am",
+      "contact_method": "phone",
+      "timestamp": "2024-03-16T09:15:00Z"
+    },
+    {
+      "firstname": "Michael",
+      "lastname": "Chen",
+      "company": "AI Solutions Group",
+      "email": "mchen@aisolutions.com",
+      "phone": "555-0125",
+      "message": "Your hackathon project at CalHacks was impressive! We're organizing a similar event and would love to have you as a mentor. Please let me know if you're interested.",
+      "contact_time": "anytime",
+      "contact_method": "text",
+      "timestamp": "2024-03-17T16:45:00Z"
+    }
+  ]
+}

@@ -95,19 +95,23 @@
   "skills": [
     {
       "category": "Programming Languages",
-      "skills": "JavaScript, Typescript, Java, C/C++, C#, Python, SQL, Kotlin, HTML/CSS"
+      "skills": "JavaScript, Typescript, Java, C/C++, C#, Python, SQL, Kotlin, HTML/CSS",
+      "yoe": "4"
     },
     {
       "category": "Developer Tools",
-      "skills": "Postman, Vercel, Firebase, Clerk, Google Console, Supabase, GraphQL, Docker, ChromaDB"
+      "skills": "Postman, Vercel, Firebase, Clerk, Google Console, Supabase, GraphQL, Docker, ChromaDB",
+      "yoe": "3"
     },
     {
       "category": "Libraries",
-      "skills": "OpenAI, Anthropic, NumPy, Pandas, Scikit Learn, MatplotLib, OpenCV, PyTorch, TensorFlow, Keras"
+      "skills": "OpenAI, Anthropic, NumPy, Pandas, Scikit Learn, MatplotLib, OpenCV, PyTorch, TensorFlow, Keras",
+      "yoe": "3"
     },
     {
       "category": "Frameworks",
-      "skills": "React, Node.js, Next.js, TypeScript, Flask, Material UI, ExpressJS"
+      "skills": "React, Node.js, Next.js, TypeScript, Flask, Material UI, ExpressJS",
+      "yoe": "4"
     }
   ]
 } 
