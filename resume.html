@@ -75,11 +75,13 @@
                         <th>Category</th>
                         <th>Skills</th>
                         <th>Years of Experience</th>
+                        <th># of Projects</th>
                     </tr>
                 </thead>
                 <tbody id="skills-body">
                     <template id="skills-template">
                         <tr>
+                            <td><strong></strong></td>
                             <td><strong></strong></td>
                             <td><strong></strong></td>
                             <td><strong></strong></td>
@@ -183,6 +185,7 @@
                     clone.querySelectorAll('td strong')[0].textContent = skill.category;
                     clone.querySelectorAll('td strong')[1].textContent = skill.skills;
                     clone.querySelectorAll('td strong')[2].textContent = skill.yoe;
+                    clone.querySelectorAll('td strong')[3].textContent = skill.projects;
                     skillsBody.appendChild(clone);
                 });
                 console.log('Skills section rendered successfully');
@@ -195,6 +198,7 @@
         console.log('Setting current date...');
         const dateDiv = document.getElementById('current-date');
         const currentDate = new Date();
+        dateDiv.textContent = currentDate.toLocaleDateString();
         console.log('Current date set successfully');
         
         // Console message
